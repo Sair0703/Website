@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Stock simulator</title>
+
+    <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='images/mortis.png')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='styles/mystocks.css')}}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet"> 
+
+    <script src="https://kit.fontawesome.com/f67e8ffd5c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <div id="tabs">
+        <ul class="greenFont mochi">
+            <li>
+                <a href="{{url_for('home')}}">
+                    Home
+                </a>
+            </li>
+            <li  class="selected">
+                <a href="{{url_for('mystocks')}}">
+                    My stocks
+                </a>
+            </li>
+            <li>
+                <a href="{{url_for('search')}}">
+                    Search
+                </a>
+            </li>
+            <li>
+                <a href="{{url_for('leaderboard')}}">
+                    Leaderboard
+                </a>
+            </li>
+            <li>
+                <a href="{{url_for('faq')}}" target="_blank">
+                    FAQ
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div id="profile">
+        <div class="greenFont mochi" id="username">
+            <i class="fas fa-user-circle"></i>
+            {{username}}
+        </div>
+        <div class="greenFont mochi" id="coins">
+            💰{{coins}}
+        </div>
+    </div>
+    <div class="stocks">
+        {%- for stock in get_user_info(username)["stocks"] %}
+            {% set name = stock["name"] %}
+            {% set amount = stock["amount"] %}
+            <div class="stock">
+                <div class="archivo stockname">
+                    {{name}}<br>stock
+                </div>
+                <div class="buybutton archivo">
+                    <button class="archivo buy" onclick="sell('{{name}}')">
+                        Sell
+                    </button>
+                </div>
+                <div class="archivo amountcontroll">
+                    <button class="change dec" onclick="decrease('{{name}}')">-</button>
+                    <p class="amount" id="amount{{stock['name']}}">
+                        1
+                    </p>
+                    <button class="change inc" onclick="increase('{{name}}')">+</button>
+                </div>
+                <p class="archivo text greenFont">stock(s)<br>to get</p>
+                <div class="price archivo" id="price{{name}}">
+                    💰{{get_user_info(name)["stock_value"]}}
+                </div>
+                <div class="archivo stock-left">
+                    You have:<br>{{stock["amount"]}}
+                </div>
+            </div>
+        {%- endfor %}
+    </div>
+
+    <input class="message" id="message" type="hidden" style="display: none;" value="{{message}}">
+
+    <script src="{{url_for('static', filename='scripts/mystocks.js')}}"></script>
+</body>
+</html>

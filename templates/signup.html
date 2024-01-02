@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sign up an account</title>
+
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/signup.css')}}">
+    <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='images/mortis.png')}}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Dongle:wght@300&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bree+Serif&family=Dongle&display=swap"
+        rel="stylesheet">
+</head>
+<body>
+    <div id="header">
+        <h1 id="welcome">Sign up an account</h1>
+    </div>
+
+    <div id="loginForm">
+        <form id="signupForm" oninput="onInput()" onfocus="onFocus()" method="post"
+            action="{{url_for('signup_validator')}}">
+
+            <label for="username" class="formlabel">Username:</label>
+            <input type="text" class="forminput" id="username" name="username" required>
+            <p id="usernameWarning" class="warning"></p>
+
+
+            <label for="password" class="formlabel">Password:</label>
+            <input type="password" class="forminput" id="password" name="password" required>
+
+            <p id="passwordWarning" class="warning"></p>
+
+
+
+            <label for="cpassword" class="formlabel" id="confirm">Confirm Password:</label>
+            <input type="password" class="forminput" id="cpassword" name="cpassword" required>
+            <p id="cpasswordWarning" class="warning"></p>
+            <input type="submit" class="submit" id="submit" value="Sign up">
+        </form>
+    </div>
+
+    <div class="donthaveaccount">
+        <p>
+            Already have an account? <a href="/login">Login!</a>
+        </p>
+    </div>
+    <input id="warning" type="hidden" value="{{warning}}">
+    <script src="{{url_for('static',filename='scripts/login.js')}}"></script>
+    <script src="{{url_for('static',filename='scripts/signup.js')}}"></script>
+
+</body>
+</html>

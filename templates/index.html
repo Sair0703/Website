@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Stock simulator</title>
+
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/index.css')}}">
+    <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='images/mortis.png')}}">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="header">
+        <h1 id="welcome">Welcome to stock simulator</h1>
+    </div>
+
+    <div id="loginAndsignup">
+        <a href="/login">
+            <button id="loginButton" class="xbutton">Login</button>
+        </a>
+        <a href="/signup">
+            <button id="signUpButton" class="xbutton">Sign up</button>
+        </a>
+
+    </div>
+
+    <script src="{{url_for('static',filename='scripts/index.js')}}"></script>
+
+</body>
+
+
+</html>
